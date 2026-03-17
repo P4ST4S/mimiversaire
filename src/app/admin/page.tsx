@@ -4,8 +4,6 @@ import { createHash } from "crypto";
 import { getAllQuestions } from "@/lib/db/queries";
 import { addQuestion, deleteQuestion } from "./actions";
 
-export const dynamic = "force-dynamic";
-
 function verifyAdminToken(token: string | undefined): boolean {
   if (!token) return false;
   const adminPassword = process.env["ADMIN_PASSWORD"] ?? "";
