@@ -1,8 +1,6 @@
 import { Suspense } from "react";
 import QuizContent from "./QuizContent";
 
-export const experimental_ppr = true;
-
 function QuizSkeleton() {
   return (
     <div className="min-h-screen flex items-center justify-center">

@@ -28,27 +28,27 @@ const BG_COLORS: Record<AnswerLabel, string> = {
   D: "#FFA602",
 };
 
-function getAnimateProps(state: AnswerState) {
-  if (state === "wrong") {
-    return { x: [0, -8, 8, -8, 8, 0] };
-  }
-  if (state === "correct") {
-    return { scale: [1, 1.05, 1] };
-  }
-  return {};
+type AnimateProps = {
+  opacity: number;
+  y: number;
+  x?: number[];
+  scale?: number[];
+};
+
+function getAnimateProps(state: AnswerState): AnimateProps {
+  const base: AnimateProps = {
+    opacity: state === "wrong" ? 0.5 : 1,
+    y: 0,
+  };
+  if (state === "wrong") return { ...base, x: [0, -8, 8, -8, 8, 0] };
+  if (state === "correct") return { ...base, scale: [1, 1.05, 1] };
+  return base;
 }
 
-function getTransitionProps(state: AnswerState) {
-  if (state === "wrong") return { duration: 0.4 };
-  if (state === "correct") return { duration: 0.4, repeat: 1 };
-  return {};
-}
-
-function getOverlayStyle(state: AnswerState): React.CSSProperties {
-  if (state === "correct") return { boxShadow: "0 0 0 4px #26890C" };
-  if (state === "reveal") return { boxShadow: "0 0 0 3px #26890C" };
-  if (state === "wrong") return { opacity: 0.5 };
-  return {};
+function getBoxShadow(state: AnswerState): string {
+  if (state === "correct") return "0 0 0 4px #26890C";
+  if (state === "reveal") return "0 0 0 3px #26890C";
+  return "none";
 }
 
 export default function AnswerButton({
@@ -64,24 +64,16 @@ export default function AnswerButton({
   return (
     <motion.button
       initial={{ opacity: 0, y: 20 }}
-      animate={{
-        opacity: state === "wrong" ? 0.5 : 1,
-        y: 0,
-        ...getAnimateProps(state),
-      }}
+      animate={getAnimateProps(state)}
       transition={{
         opacity: { delay, duration: 0.25 },
         y: { delay, duration: 0.25 },
-        ...getTransitionProps(state),
       }}
       whileTap={!disabled ? { scale: 0.95 } : undefined}
       onClick={onClick}
       disabled={disabled}
-      style={{
-        backgroundColor: bgColor,
-        ...getOverlayStyle(state),
-      }}
       className="relative flex items-center gap-3 w-full rounded-xl px-4 py-4 text-white font-bold cursor-pointer disabled:cursor-default border-2 border-transparent"
+      style={{ backgroundColor: bgColor, boxShadow: getBoxShadow(state) }}
     >
       <span
         className="flex items-center justify-center w-9 h-9 rounded-lg bg-black/20 text-lg flex-shrink-0"

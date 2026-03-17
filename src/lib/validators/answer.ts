@@ -7,7 +7,7 @@ export const SubmitAnswerSchema = z.object({
 });
 
 export const InitSessionSchema = z.object({
-  metadata: z.record(z.string()).optional(),
+  metadata: z.record(z.string(), z.string()).optional(),
 });
 
 export type SubmitAnswerInput = z.infer<typeof SubmitAnswerSchema>;
