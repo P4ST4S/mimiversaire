@@ -82,10 +82,17 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
         ))}
       </div>
 
+      <p
+        className="text-game-accent-2 font-semibold text-center leading-relaxed"
+        style={{ fontSize: "clamp(0.9rem, 1.8vw, 1.1rem)" }}
+      >
+        C&apos;était un petit quizz de la part de la team Malveillance, encore bon anniversaire à notre Nami de France !
+      </p>
+
       <motion.button
         onClick={handleReplay}
-        className="mt-2 px-8 py-3 rounded-xl font-bold text-white text-lg cursor-pointer"
-        style={{ background: "#1368CE" }}
+        className="mt-2 rounded-xl font-bold text-white text-lg cursor-pointer"
+        style={{ background: "#1368CE", padding: "0.75rem 2.5rem" }}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.97 }}
       >

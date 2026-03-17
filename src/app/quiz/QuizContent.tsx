@@ -213,7 +213,11 @@ export default function QuizContent() {
               key="roast"
               roastText={feedback.roastText}
               correctAnswer={feedback.correctAnswer}
-              onContinue={handleContinue}
+              onContinue={() => {
+                setFeedback({ type: "idle" });
+                setAnswerStates(["idle", "idle", "idle", "idle"]);
+                setIsLocked(false);
+              }}
             />
           )}
         </AnimatePresence>

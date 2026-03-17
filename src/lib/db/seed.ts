@@ -10,10 +10,9 @@ const SEED_QUESTIONS = [
     correctIndex: null,
     correctAnswer: "Wassim",
     acceptPartial: true,
-    clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4",
+    clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4",
     roastText:
-      "C'est Wassim... le pitchoune n°2 que tu vois TOUT LE TEMPS. Leon pleure. 💀",
+      "C'est pourtant... un des pitchounes que tu vois TOUT LE TEMPS ! 💀",
   },
   {
     order: 2,
@@ -25,8 +24,7 @@ const SEED_QUESTIONS = [
       { label: "D", text: "Le hot dog au mille saucisse" },
     ],
     correctIndex: 2,
-    clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/7.mp4",
+    clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/7.mp4",
     roastText:
       "Tu connais même pas le menu de ta propre communauté... Aziz te retire son étoile Michelin. 🍝",
   },
@@ -40,8 +38,7 @@ const SEED_QUESTIONS = [
       { label: "D", text: "Le goat de RE3 Nemesis" },
     ],
     correctIndex: 3,
-    clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4",
+    clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4",
     roastText:
       "T'as même pas retenu ton propre rêve de cosplay... Le chat te regarde avec pitié. 🪡",
   },
@@ -53,8 +50,7 @@ const SEED_QUESTIONS = [
     correctIndex: null,
     correctAnswer: "The Quarry",
     acceptPartial: true,
-    clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/1.mp4",
+    clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/1.mp4",
     roastText:
       "T'as explosé une mamie en jeu et t'as même pas le souvenir du crime... Wesker aurait assumé, lui. 💥👵",
   },
