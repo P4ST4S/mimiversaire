@@ -1,0 +1,73 @@
+# ============================================================
+# QUESTIONS SEED — Birthday Quiz POC (3 questions)
+# ============================================================
+# FORMAT PAR QUESTION :
+#   order           → numéro d'ordre d'apparition (1, 2, 3...)
+#   text            → texte de la question
+#   option_a/b/c/d  → les 4 réponses
+#   correct_index   → 0=A | 1=B | 2=C | 3=D  ← À REMPLIR
+#   clip_url        → URL du clip R2 (bonne réponse) ← À REMPLIR
+#   roast_text      → texte affiché si mauvaise réponse
+# ============================================================
+
+---
+
+order: 1
+
+text: À qui ressemble le pitchoune n°2 Wassim ?
+
+option_a: Wavi
+option_b: Le daron d'Arthur
+option_c: Aziz prime
+option_d: La réponse D
+
+correct_index: 1
+
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4
+
+roast_text: T'as raté le visage de quelqu'un que tu vois toutes les semaines... 💀 Leon te regarde avec déception.
+
+---
+
+order: 2
+
+text: Quelle recette du chef cuisinier de la communauté, Aziz n'a jamais faite ?
+
+option_a: Son fameux tiramisu kiwi
+option_b: L'iconique sandwich pims orange chèvre miel
+option_c: L'union Chine - Italie nouilles carbonara
+option_d: Le hot dog au mille saucisse
+
+correct_index: 2
+
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/7.mp4
+
+roast_text: Tu connais même pas le menu de ta propre communauté... Aziz te retire son étoile Michelin. 🍝
+
+---
+
+order: 3
+
+text: Mimi rêve de faire un cosplay très spécial, lequel ?
+
+option_a: La reine, la déesse, l'inimitable, Makima
+option_b: Son coup de cœur Orihime
+option_c: Senritsu la magnifique
+option_d: Le goat de RE3 Nemesis
+
+correct_index: 3
+
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4
+
+roast_text: T'as même pas retenu ton propre rêve de cosplay... Le chat te regarde avec pitié. 🪡
+
+---
+
+# ============================================================
+# CHECKLIST AVANT DE LANCER LE SEED
+# ============================================================
+# [ ] correct_index renseigné pour les 3 questions (0/1/2/3)
+# [ ] 3 clips uploadés sur Cloudflare R2 avec accès public
+# [ ] Les 3 clip_url sont remplacées par les vraies URLs R2
+# [ ] Variables d'env configurées (DATABASE_URL, NEXT_PUBLIC_R2_BASE_URL)
+# ============================================================
