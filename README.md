@@ -1,4 +1,4 @@
-# Mimiversaire Quiz 🎂
+# Mimiversaire 🎂
 
 Un quiz anniversaire style Kahoot pour fêter l'anniv de Mimi en stream. Solo, 3 questions (extensible), clips vidéos sur bonne réponse, texte roast sur mauvaise.
 
