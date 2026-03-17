@@ -11,7 +11,7 @@ const SEED_QUESTIONS = [
     correctAnswer: "Wassim",
     acceptPartial: true,
     clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4",
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4",
     roastText:
       "C'est Wassim... le pitchoune n°2 que tu vois TOUT LE TEMPS. Leon pleure. 💀",
   },
