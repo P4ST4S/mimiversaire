@@ -45,6 +45,19 @@ const SEED_QUESTIONS = [
     roastText:
       "T'as même pas retenu ton propre rêve de cosplay... Le chat te regarde avec pitié. 🪡",
   },
+  {
+    order: 4,
+    questionType: "plain_text",
+    text: "Sur quel jeu Mimi à t'elle exploser la tête d'une grand-mère ?",
+    options: null,
+    correctIndex: null,
+    correctAnswer: "The Quarry",
+    acceptPartial: true,
+    clipUrl:
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/1.mp4",
+    roastText:
+      "T'as explosé une mamie en jeu et t'as même pas le souvenir du crime... Wesker aurait assumé, lui. 💥👵",
+  },
 ];
 
 async function seed(): Promise<void> {
@@ -52,7 +65,7 @@ async function seed(): Promise<void> {
   await db.delete(questions);
   console.warn("Inserting seed questions...");
   await db.insert(questions).values(SEED_QUESTIONS);
-  console.warn("Seed complete. 3 questions inserted.");
+  console.warn("Seed complete. 4 questions inserted.");
   process.exit(0);
 }
 
