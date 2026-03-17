@@ -28,7 +28,7 @@ text: Qui ressemble au daron d'Arthur ?
 correct_answer: Wassim
 accept_partial: true
 
-clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4
 
 roast_text: C'est Wassim... le pitchoune n°2 que tu vois TOUT LE TEMPS. Leon pleure. 💀
 
