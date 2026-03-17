@@ -83,14 +83,12 @@ export default function QuizContent() {
 
       // Update answer button states
       const newStates: AnswerState[] = ["idle", "idle", "idle", "idle"];
-      for (let i = 0; i < 4; i++) {
-        if (i === correctIndex) {
-          newStates[i] = "correct";
-        } else if (i === index && !isCorrect) {
-          newStates[i] = "wrong";
-        } else {
-          newStates[i] = "reveal";
+      if (isCorrect) {
+        for (let i = 0; i < 4; i++) {
+          newStates[i] = i === correctIndex ? "correct" : "reveal";
         }
+      } else {
+        newStates[index] = "wrong";
       }
       setAnswerStates(newStates);
 
