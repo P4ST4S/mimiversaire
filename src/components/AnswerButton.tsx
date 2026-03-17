@@ -72,7 +72,7 @@ export default function AnswerButton({
       whileTap={!disabled ? { scale: 0.95 } : undefined}
       onClick={onClick}
       disabled={disabled}
-      className="relative flex items-center gap-3 w-full rounded-xl px-4 py-4 text-white font-bold cursor-pointer disabled:cursor-default border-2 border-transparent"
+      className="relative flex items-center gap-5 w-full rounded-xl px-6 py-5 text-white font-bold cursor-pointer disabled:cursor-default border-2 border-transparent"
       style={{ backgroundColor: bgColor, boxShadow: getBoxShadow(state) }}
     >
       <span
@@ -82,8 +82,8 @@ export default function AnswerButton({
         {ICONS[label]}
       </span>
       <span
-        className="text-left leading-tight"
-        style={{ fontSize: "clamp(0.9rem, 2vw, 1.2rem)" }}
+        className="text-left leading-snug py-1"
+        style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)" }}
       >
         {text}
       </span>

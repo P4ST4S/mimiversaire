@@ -42,8 +42,8 @@ export default function ClipPlayer({ clipUrl, onContinue }: ClipPlayerProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.3 }}
         onClick={onContinue}
-        className="mt-2 px-8 py-3 rounded-xl font-bold text-white text-lg cursor-pointer"
-        style={{ background: "#26890C" }}
+        className="mt-2 rounded-xl font-bold text-white text-lg cursor-pointer"
+        style={{ background: "#26890C", padding: "0.75rem 2.5rem" }}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.97 }}
       >

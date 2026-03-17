@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import type { Question } from "@/lib/db/queries";
 import type { AnswerLabel, AnswerState } from "./AnswerButton";
 import AnswerButton from "./AnswerButton";
-import Timer from "./Timer";
 
 const LABELS: AnswerLabel[] = ["A", "B", "C", "D"];
 const DELAYS = [0, 0.08, 0.16, 0.24];
@@ -16,8 +15,6 @@ interface QuestionCardProps {
   onAnswer: (index: number) => void;
   answerStates: AnswerState[];
   isLocked: boolean;
-  timerPaused: boolean;
-  onTimerExpire: () => void;
 }
 
 export default function QuestionCard({
@@ -27,8 +24,6 @@ export default function QuestionCard({
   onAnswer,
   answerStates,
   isLocked,
-  timerPaused,
-  onTimerExpire,
 }: QuestionCardProps) {
   const options = question.options as Array<{ label: string; text: string }>;
 
@@ -41,17 +36,11 @@ export default function QuestionCard({
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
       className="w-full max-w-3xl mx-auto flex flex-col gap-5"
     >
-      {/* Header: progress + timer */}
-      <div className="flex items-center justify-between">
+      {/* Header: progress */}
+      <div className="flex items-center">
         <span className="text-sm font-semibold text-game-accent-2">
           Question {questionNumber} / {totalQuestions}
         </span>
-        <Timer
-          durationSeconds={20}
-          onExpire={onTimerExpire}
-          paused={timerPaused}
-          size={72}
-        />
       </div>
 
       {/* Question */}

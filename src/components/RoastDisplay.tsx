@@ -34,7 +34,8 @@ export default function RoastDisplay({
       </p>
       <motion.button
         onClick={onContinue}
-        className="mt-2 px-8 py-3 rounded-xl font-bold text-white text-lg bg-white/20 cursor-pointer"
+        className="mt-2 rounded-xl font-bold text-white text-lg bg-white/20 cursor-pointer"
+        style={{ padding: "0.75rem 2.5rem" }}
         whileHover={{ scale: 1.04, backgroundColor: "rgba(255,255,255,0.3)" }}
         whileTap={{ scale: 0.97 }}
       >

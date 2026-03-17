@@ -39,7 +39,6 @@ export default function QuizContent() {
     "idle",
   ]);
   const [isLocked, setIsLocked] = useState(false);
-  const [timerPaused, setTimerPaused] = useState(false);
   const [feedback, setFeedback] = useState<FeedbackState>({ type: "idle" });
 
   // Redirect to home if no session
@@ -64,7 +63,6 @@ export default function QuizContent() {
   useEffect(() => {
     setAnswerStates(["idle", "idle", "idle", "idle"]);
     setIsLocked(false);
-    setTimerPaused(false);
     setFeedback({ type: "idle" });
   }, [questionIndex]);
 
@@ -72,7 +70,6 @@ export default function QuizContent() {
     async (index: number) => {
       if (isLocked || !sessionId) return;
       setIsLocked(true);
-      setTimerPaused(true);
 
       const result = await submitAnswer({
         sessionId,
@@ -118,11 +115,6 @@ export default function QuizContent() {
     },
     [isLocked, sessionId, questionIndex, recordAnswer, questions]
   );
-
-  const handleTimerExpire = useCallback(() => {
-    if (isLocked) return;
-    void handleAnswer(99); // index 99 = invalid = wrong
-  }, [isLocked, handleAnswer]);
 
   const handleContinue = useCallback(() => {
     const nextIndex = questionIndex + 1;
@@ -177,8 +169,6 @@ export default function QuizContent() {
               onAnswer={(i) => void handleAnswer(i)}
               answerStates={answerStates}
               isLocked={isLocked}
-              timerPaused={timerPaused}
-              onTimerExpire={handleTimerExpire}
             />
           )}
           {feedback.type === "correct" && (
