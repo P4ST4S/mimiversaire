@@ -43,7 +43,7 @@ export default async function AdminPage() {
                   #{q.order} — {q.text}
                 </p>
                 <p className="text-game-accent-2 text-xs mt-1">
-                  Bonne réponse : {options[q.correctIndex]?.text ?? "?"}
+                  Bonne réponse : {q.correctIndex != null ? options[q.correctIndex]?.text : q.correctAnswer} ?? "?"
                 </p>
                 {q.clipUrl && (
                   <p className="text-game-accent-2/60 text-xs truncate mt-0.5">
