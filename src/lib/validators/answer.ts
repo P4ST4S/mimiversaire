@@ -3,7 +3,8 @@ import { z } from "zod";
 export const SubmitAnswerSchema = z.object({
   sessionId: z.number().int().positive(),
   questionOrder: z.number().int().min(0),
-  answerIndex: z.number().int().min(0).max(3),
+  answerIndex: z.number().int().min(0).max(3).optional(),
+  answerText: z.string().optional(),
 });
 
 export const InitSessionSchema = z.object({

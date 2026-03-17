@@ -30,7 +30,8 @@ export async function initGameSession(
 export async function submitAnswer(input: unknown): Promise<
   ActionResult<{
     isCorrect: boolean;
-    correctIndex: number;
+    correctIndex: number | null;
+    correctAnswer: string | null;
     clipUrl: string | null;
     roastText: string | null;
   }>
@@ -40,7 +41,7 @@ export async function submitAnswer(input: unknown): Promise<
     return { success: false, error: parsed.error.message };
   }
 
-  const { sessionId, questionOrder, answerIndex } = parsed.data;
+  const { sessionId, questionOrder, answerIndex, answerText } = parsed.data;
 
   const [question, session] = await Promise.all([
     getQuestionByOrder(questionOrder),
@@ -50,16 +51,26 @@ export async function submitAnswer(input: unknown): Promise<
   if (!question) return { success: false, error: "Question not found" };
   if (!session) return { success: false, error: "Session not found" };
 
-  const isCorrect = answerIndex === question.correctIndex;
-  const newScore = session.score + (isCorrect ? 1 : 0);
+  let isCorrect: boolean;
+  if (question.questionType === "plain_text") {
+    const expected = (question.correctAnswer ?? "").toLowerCase().trim();
+    const given = (answerText ?? "").toLowerCase().trim();
+    isCorrect = question.acceptPartial
+      ? given.includes(expected) || expected.includes(given)
+      : given === expected;
+  } else {
+    isCorrect = answerIndex === question.correctIndex;
+  }
 
+  const newScore = session.score + (isCorrect ? 1 : 0);
   await updateSession(sessionId, newScore, questionOrder + 1);
 
   return {
     success: true,
     data: {
       isCorrect,
-      correctIndex: question.correctIndex,
+      correctIndex: question.correctIndex ?? null,
+      correctAnswer: question.correctAnswer ?? null,
       clipUrl: question.clipUrl ?? null,
       roastText: question.roastText ?? null,
     },

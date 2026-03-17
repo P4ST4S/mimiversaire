@@ -73,7 +73,7 @@ export default function QuizContent() {
 
       const result = await submitAnswer({
         sessionId,
-        questionOrder: questionIndex + 1, // DB order is 1-indexed
+        questionOrder: questionIndex + 1,
         answerIndex: index,
       });
 
@@ -96,13 +96,12 @@ export default function QuizContent() {
 
       recordAnswer(isCorrect);
 
-      // Show feedback after a brief delay for the animation
       setTimeout(() => {
         const currentQuestion = questions[questionIndex];
         if (isCorrect && clipUrl) {
           setFeedback({ type: "correct", clipUrl });
         } else {
-          const correctOption = currentQuestion?.options[correctIndex] as
+          const correctOption = currentQuestion?.options?.[correctIndex ?? -1] as
             | { text: string }
             | undefined;
           setFeedback({
@@ -114,6 +113,36 @@ export default function QuizContent() {
       }, 800);
     },
     [isLocked, sessionId, questionIndex, recordAnswer, questions]
+  );
+
+  const handleTextAnswer = useCallback(
+    async (text: string) => {
+      if (isLocked || !sessionId) return;
+      setIsLocked(true);
+
+      const result = await submitAnswer({
+        sessionId,
+        questionOrder: questionIndex + 1,
+        answerText: text,
+      });
+
+      if (!result.success) return;
+
+      const { isCorrect, correctAnswer, clipUrl, roastText } = result.data;
+
+      recordAnswer(isCorrect);
+
+      if (isCorrect && clipUrl) {
+        setFeedback({ type: "correct", clipUrl });
+      } else {
+        setFeedback({
+          type: "wrong",
+          roastText: roastText ?? "Mauvaise réponse !",
+          correctAnswer: correctAnswer ?? "",
+        });
+      }
+    },
+    [isLocked, sessionId, questionIndex, recordAnswer]
   );
 
   const handleContinue = useCallback(() => {
@@ -167,6 +196,7 @@ export default function QuizContent() {
               questionNumber={questionIndex + 1}
               totalQuestions={totalQuestions}
               onAnswer={(i) => void handleAnswer(i)}
+              onTextAnswer={(t) => void handleTextAnswer(t)}
               answerStates={answerStates}
               isLocked={isLocked}
             />

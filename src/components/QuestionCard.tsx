@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { Question } from "@/lib/db/queries";
 import type { AnswerLabel, AnswerState } from "./AnswerButton";
 import AnswerButton from "./AnswerButton";
+import TextInputQuestion from "./TextInputQuestion";
 
 const LABELS: AnswerLabel[] = ["A", "B", "C", "D"];
 const DELAYS = [0, 0.08, 0.16, 0.24];
@@ -13,6 +14,7 @@ interface QuestionCardProps {
   questionNumber: number;
   totalQuestions: number;
   onAnswer: (index: number) => void;
+  onTextAnswer: (text: string) => void;
   answerStates: AnswerState[];
   isLocked: boolean;
 }
@@ -22,10 +24,12 @@ export default function QuestionCard({
   questionNumber,
   totalQuestions,
   onAnswer,
+  onTextAnswer,
   answerStates,
   isLocked,
 }: QuestionCardProps) {
-  const options = question.options as Array<{ label: string; text: string }>;
+  const isPlainText = question.questionType === "plain_text";
+  const options = (question.options ?? []) as Array<{ label: string; text: string }>;
 
   return (
     <motion.div
@@ -55,25 +59,29 @@ export default function QuestionCard({
         {question.text}
       </div>
 
-      {/* Answers grid */}
-      <div className="grid grid-cols-2 gap-3">
-        {options.map((option, index) => {
-          const label = LABELS[index];
-          const state = answerStates[index] ?? "idle";
-          if (!label) return null;
-          return (
-            <AnswerButton
-              key={index}
-              label={label}
-              text={option.text}
-              onClick={() => onAnswer(index)}
-              disabled={isLocked}
-              state={state}
-              delay={DELAYS[index] ?? 0}
-            />
-          );
-        })}
-      </div>
+      {/* Answers */}
+      {isPlainText ? (
+        <TextInputQuestion onSubmit={onTextAnswer} disabled={isLocked} />
+      ) : (
+        <div className="grid grid-cols-2 gap-3">
+          {options.map((option, index) => {
+            const label = LABELS[index];
+            const state = answerStates[index] ?? "idle";
+            if (!label) return null;
+            return (
+              <AnswerButton
+                key={index}
+                label={label}
+                text={option.text}
+                onClick={() => onAnswer(index)}
+                disabled={isLocked}
+                state={state}
+                delay={DELAYS[index] ?? 0}
+              />
+            );
+          })}
+        </div>
+      )}
     </motion.div>
   );
 }

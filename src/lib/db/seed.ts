@@ -4,18 +4,16 @@ import { questions } from "./schema";
 const SEED_QUESTIONS = [
   {
     order: 1,
-    text: "À qui ressemble le pitchoune n°2 Wassim ?",
-    options: [
-      { label: "A", text: "Wavi" },
-      { label: "B", text: "Le daron d'Arthur" },
-      { label: "C", text: "Aziz prime" },
-      { label: "D", text: "La réponse D" },
-    ],
-    correctIndex: 1,
+    questionType: "plain_text",
+    text: "Qui ressemble au daron d'Arthur ?",
+    options: null,
+    correctIndex: null,
+    correctAnswer: "Wassim",
+    acceptPartial: true,
     clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4",
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4",
     roastText:
-      "T'as raté le visage de quelqu'un que tu vois toutes les semaines... 💀 Leon te regarde avec déception.",
+      "C'est Wassim... le pitchoune n°2 que tu vois TOUT LE TEMPS. Leon pleure. 💀",
   },
   {
     order: 2,

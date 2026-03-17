@@ -1,44 +1,50 @@
 # ============================================================
 # QUESTIONS SEED — Birthday Quiz POC (3 questions)
 # ============================================================
-# FORMAT PAR QUESTION :
-#   order           → numéro d'ordre d'apparition (1, 2, 3...)
-#   text            → texte de la question
-#   option_a/b/c/d  → les 4 réponses
-#   correct_index   → 0=A | 1=B | 2=C | 3=D  ← À REMPLIR
-#   clip_url        → URL du clip R2 (bonne réponse) ← À REMPLIR
-#   roast_text      → texte affiché si mauvaise réponse
+# TYPES DE QUESTIONS :
+#
+#   type: plain_text
+#     → La streameuse tape la réponse à la main
+#     → correct_answer : la réponse attendue (insensible à la casse)
+#     → accept_partial : true = accepte si la réponse contient le mot clé
+#                        false = correspondance exacte requise
+#
+#   type: qcm
+#     → 4 boutons de réponse (A/B/C/D)
+#     → correct_index : 0=A | 1=B | 2=C | 3=D
+#
+# COMMUN AUX DEUX TYPES :
+#   clip_url   → URL clip R2 affiché si BONNE réponse  ← À REMPLIR
+#   roast_text → texte affiché si MAUVAISE réponse
 # ============================================================
 
 ---
 
 order: 1
+type: plain_text
 
-text: À qui ressemble le pitchoune n°2 Wassim ?
+text: Qui ressemble au daron d'Arthur ?
 
-option_a: Wavi
-option_b: Le daron d'Arthur
-option_c: Aziz prime
-option_d: La réponse D
+correct_answer: Wassim
+accept_partial: true
 
-correct_index: 1
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4
 
-clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4
-
-roast_text: T'as raté le visage de quelqu'un que tu vois toutes les semaines... 💀 Leon te regarde avec déception.
+roast_text: C'est Wassim... le pitchoune n°2 que tu vois TOUT LE TEMPS. Leon pleure. 💀
 
 ---
 
 order: 2
+type: qcm
 
 text: Quelle recette du chef cuisinier de la communauté, Aziz n'a jamais faite ?
 
 option_a: Son fameux tiramisu kiwi
-option_b: L'iconique sandwich pims orange chèvre miel
-option_c: L'union Chine - Italie nouilles carbonara
+option_b: L'union Chine - Italie nouilles carbonara
+option_c: L'iconique sandwich pims orange chèvre miel
 option_d: Le hot dog au mille saucisse
 
-correct_index: 2
+correct_index: ← METTRE 0, 1, 2 ou 3
 
 clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/7.mp4
 
@@ -47,6 +53,7 @@ roast_text: Tu connais même pas le menu de ta propre communauté... Aziz te ret
 ---
 
 order: 3
+type: qcm
 
 text: Mimi rêve de faire un cosplay très spécial, lequel ?
 
@@ -55,7 +62,7 @@ option_b: Son coup de cœur Orihime
 option_c: Senritsu la magnifique
 option_d: Le goat de RE3 Nemesis
 
-correct_index: 3
+correct_index: ← METTRE 0, 1, 2 ou 3
 
 clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4
 
@@ -63,11 +70,26 @@ roast_text: T'as même pas retenu ton propre rêve de cosplay... Le chat te rega
 
 ---
 
+order: 4
+type: plain_text
+
+text: Sur quel jeu Mimi à t'elle exploser la tête d'une grand-mère ?
+
+correct_answer: The Wuarry
+accept_partial: true
+
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/1.mp4
+
+roast_text: T'as explosé une mamie en jeu et t'as même pas le souvenir du crime... Wesker aurait assumé, lui. 💥👵
+
+---
+
 # ============================================================
 # CHECKLIST AVANT DE LANCER LE SEED
 # ============================================================
-# [ ] correct_index renseigné pour les 3 questions (0/1/2/3)
+# [ ] correct_answer vérifié (Q1 plain_text)
+# [ ] correct_index renseigné pour Q2 et Q3 (0/1/2/3)
 # [ ] 3 clips uploadés sur Cloudflare R2 avec accès public
-# [ ] Les 3 clip_url sont remplacées par les vraies URLs R2
+# [ ] Les 3 clip_url remplacées par les vraies URLs R2
 # [ ] Variables d'env configurées (DATABASE_URL, NEXT_PUBLIC_R2_BASE_URL)
 # ============================================================
