@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { motion, useMotionValue, animate } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useGameStore } from "@/lib/store/game-store";
 
@@ -12,7 +12,7 @@ interface ScoreBoardProps {
 
 function getVerdict(
   score: number,
-  total: number
+  total: number,
 ): { emoji: string; text: string } {
   const ratio = score / total;
   if (ratio >= 0.9) return { emoji: "🏆", text: "Légendaire !" };
@@ -27,7 +27,7 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
   const resetGame = useGameStore((s) => s.resetGame);
 
   const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => Math.round(v));
+  // const rounded = useTransform(count, (v) => Math.round(v));
 
   useEffect(() => {
     const controls = animate(count, score, { duration: 1.5, ease: "easeOut" });
@@ -47,7 +47,11 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
       className="w-full max-w-xl mx-auto flex flex-col items-center gap-6 rounded-2xl text-center"
-      style={{ background: "#1B1D35", border: "1px solid rgba(255,255,255,0.1)", padding: "3.5rem 2rem" }}
+      style={{
+        background: "#1B1D35",
+        border: "1px solid rgba(255,255,255,0.1)",
+        padding: "3.5rem 2rem",
+      }}
     >
       <span className="text-6xl">{emoji}</span>
 
@@ -74,10 +78,15 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
       </div>
 
       <p
-        className="text-game-accent-2 font-semibold text-center leading-relaxed"
+        className="text-game-accent font-semibold text-center leading-relaxed"
         style={{ fontSize: "clamp(0.9rem, 1.8vw, 1.1rem)" }}
       >
-        C&apos;était un petit quizz de la part de la team Malveillance, encore bon anniversaire à notre Nami de France !
+        C&apos;était un petit quizz de la part de la team Malveillance, encore
+        bon anniversaire à notre Nami de France !
+        <br />
+        <span className="text-game-accent-2" style={{ fontSize: "0.9rem" }}>
+          (Tu peux me donner 10k exp stp, ça serait sympa)
+        </span>
       </p>
 
       <motion.button
