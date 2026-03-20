@@ -46,26 +46,17 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
-      className="w-full max-w-xl mx-auto flex flex-col items-center gap-6 rounded-2xl p-10 text-center"
-      style={{ background: "#1B1D35", border: "1px solid rgba(255,255,255,0.1)" }}
+      className="w-full max-w-xl mx-auto flex flex-col items-center gap-6 rounded-2xl text-center"
+      style={{ background: "#1B1D35", border: "1px solid rgba(255,255,255,0.1)", padding: "3.5rem 2rem" }}
     >
       <span className="text-6xl">{emoji}</span>
 
-      <div>
-        <p
-          className="font-black text-game-accent"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
-        >
-          <motion.span>{rounded}</motion.span>
-          <span className="text-game-accent-2">/{totalQuestions}</span>
-        </p>
-        <p
-          className="font-bold text-game-accent mt-1"
-          style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}
-        >
-          {text}
-        </p>
-      </div>
+      <p
+        className="font-bold text-game-accent mt-1"
+        style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}
+      >
+        {text}
+      </p>
 
       {/* Stars */}
       <div className="flex gap-2 flex-wrap justify-center">
