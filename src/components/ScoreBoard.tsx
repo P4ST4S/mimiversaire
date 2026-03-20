@@ -83,7 +83,7 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
       <motion.button
         onClick={handleReplay}
         className="mt-2 rounded-xl font-bold text-white text-lg cursor-pointer"
-        style={{ background: "#1368CE", padding: "0.75rem 2.5rem" }}
+        style={{ background: "#88a2ee", padding: "0.75rem 2.5rem" }}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.97 }}
       >

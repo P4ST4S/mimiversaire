@@ -23,7 +23,7 @@ const ICONS: Record<AnswerLabel, string> = {
 
 const BG_COLORS: Record<AnswerLabel, string> = {
   A: "#E21B3C",
-  B: "#1368CE",
+  B: "#88a2ee",
   C: "#26890C",
   D: "#FFA602",
 };

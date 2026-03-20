@@ -1,9 +1,11 @@
 import HomeClient from "@/components/HomeClient";
+import SalamSticker from "@/components/SalamSticker";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
       <div className="flex flex-col items-center gap-6 max-w-xl">
+        <SalamSticker />
         <h1
           className="font-black text-game-accent leading-tight"
           style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}

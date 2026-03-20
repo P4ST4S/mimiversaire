@@ -31,7 +31,7 @@ export default function HomeClient() {
         onClick={() => void handleStart()}
         disabled={loading}
         className="rounded-2xl font-black text-white tracking-wide cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-        style={{ background: "#1368CE", fontSize: "clamp(1rem, 2.5vw, 1.4rem)", padding: "1.25rem 4rem" }}
+        style={{ background: "#88a2ee", fontSize: "clamp(1rem, 2.5vw, 1.4rem)", padding: "1.25rem 4rem" }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
       >

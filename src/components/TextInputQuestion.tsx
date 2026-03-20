@@ -44,7 +44,7 @@ export default function TextInputQuestion({
         disabled={disabled || !value.trim()}
         className="rounded-xl font-bold text-white cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
         style={{
-          background: "#1368CE",
+          background: "#88a2ee",
           padding: "0.75rem 2.5rem",
           fontSize: "clamp(1rem, 2vw, 1.2rem)",
         }}

@@ -45,7 +45,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             className="w-full py-3 rounded-xl font-bold text-white cursor-pointer"
-            style={{ background: "#1368CE" }}
+            style={{ background: "#88a2ee" }}
           >
             Connexion
           </button>
