@@ -5,11 +5,11 @@ import BirthdayCake from "@/components/BirthdayCake";
 export default function HomePage() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-6 text-center">
-      <div className="flex flex-col items-center gap-6 max-w-xl">
+      <div className="flex flex-col items-center gap-6">
         <SalamSticker />
         <h1
           className="font-black text-game-accent leading-tight"
-          style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
+          style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", display: "flex", alignItems: "center", gap: "0.3em", whiteSpace: "nowrap" }}
         >
           <BirthdayCake />Joyeux Anniversaire Mimi !
         </h1>
