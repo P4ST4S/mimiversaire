@@ -1,5 +1,6 @@
 import HomeClient from "@/components/HomeClient";
 import SalamSticker from "@/components/SalamSticker";
+import BirthdayCake from "@/components/BirthdayCake";
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
           className="font-black text-game-accent leading-tight"
           style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
         >
-          🎂 Joyeux Anniversaire Mimi !
+          <BirthdayCake />Joyeux Anniversaire Mimi !
         </h1>
         <p
           className="text-game-accent-2 font-semibold"
