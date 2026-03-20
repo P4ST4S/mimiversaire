@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { PartyPopper } from "lucide-react";
 import { useGameStore } from "@/lib/store/game-store";
 import { initGameSession } from "@/lib/actions/game";
 
@@ -35,7 +36,7 @@ export default function HomeClient() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
       >
-        {loading ? "Chargement..." : "Démarrer le quiz 🎉"}
+        {loading ? "Chargement..." : <span className="flex items-center gap-2">Démarrer le quiz <PartyPopper size={20} /></span>}
       </motion.button>
       {error && (
         <p className="text-sm text-red-400 font-semibold">
