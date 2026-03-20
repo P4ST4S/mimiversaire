@@ -54,6 +54,22 @@ const SEED_QUESTIONS = [
     roastText:
       "T'as explosé une mamie en jeu et t'as même pas le souvenir du crime... Wesker aurait assumé, lui. 💥👵",
   },
+  {
+    order: 5,
+    questionType: "qcm",
+    text: "Quel personnage incarnait le cosplayer qui a offert à Mimi l'une des interactions sociales les plus malaisantes de sa vie ?",
+    options: [
+      { label: "A", text: "Deadpool, toujours prêt à briser le 4ème mur" },
+      { label: "B", text: "Sanji, le simp numéro 1 de Nami" },
+      { label: "C", text: 'Nicky Larson, qui a eu beaucoup de mal à "se contrôler"' },
+      { label: "D", text: "Tortue Géniale, fidèle à sa réputation" },
+    ],
+    correctIndex: 2,
+    clipUrl:
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/nickycringe.mp4",
+    roastText:
+      "Tu as oublié ce moment de pure gêne absolue avec ce faux Nicky Larson ? Ton radar à malaise est définitivement cassé. 🔫",
+  },
 ];
 
 async function seed(): Promise<void> {
@@ -61,7 +77,7 @@ async function seed(): Promise<void> {
   await db.delete(questions);
   console.warn("Inserting seed questions...");
   await db.insert(questions).values(SEED_QUESTIONS);
-  console.warn("Seed complete. 4 questions inserted.");
+  console.warn("Seed complete. 5 questions inserted.");
   process.exit(0);
 }
 

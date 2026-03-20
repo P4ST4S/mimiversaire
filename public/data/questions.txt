@@ -84,6 +84,22 @@ roast_text: T'as explosé une mamie en jeu et t'as même pas le souvenir du crim
 
 ---
 
+order: 5
+type: qcm
+
+text: Quel personnage incarnait le cosplayer qui a offert à Mimi l'une des interactions sociales les plus malaisantes de sa vie ?
+option_a: Deadpool, toujours prêt à briser le 4ème mur
+option_b: Sanji, le simp numéro 1 de Nami
+option_c: Nicky Larson, qui a eu beaucoup de mal à "se contrôler"
+option_d: Tortue Géniale, fidèle à sa réputation
+
+correct_index: 2
+
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/nickycringe.mp4
+
+roast_text: Tu as oublié ce moment de pure gêne absolue avec ce faux Nicky Larson ? Ton radar à malaise est définitivement cassé. 🔫
+
+
 # ============================================================
 # CHECKLIST AVANT DE LANCER LE SEED
 # ============================================================
