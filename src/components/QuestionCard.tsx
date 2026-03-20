@@ -29,59 +29,72 @@ export default function QuestionCard({
   isLocked,
 }: QuestionCardProps) {
   const isPlainText = question.questionType === "plain_text";
-  const options = (question.options ?? []) as Array<{ label: string; text: string }>;
+  const options = (question.options ?? []) as Array<{
+    label: string;
+    text: string;
+  }>;
 
   return (
-    <motion.div
-      key={question.id}
-      initial={{ opacity: 0, scale: 0.92 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, x: -80 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="w-full max-w-3xl mx-auto flex flex-col gap-5"
-    >
-      {/* Header: progress */}
-      <div className="flex items-center">
-        <span className="text-sm font-semibold text-game-accent-2">
-          Question {questionNumber} / {totalQuestions}
-        </span>
-      </div>
-
-      {/* Question */}
-      <div
-        className="rounded-2xl p-6 text-center font-bold text-game-accent leading-snug"
-        style={{
-          background: "#1B1D35",
-          border: "1px solid rgba(255,255,255,0.1)",
-          fontSize: "clamp(1.2rem, 2.5vw, 2rem)",
-        }}
+    <>
+      <motion.div
+        key={question.id}
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, x: -80 }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        className="w-full max-w-3xl mx-auto flex flex-col gap-5"
       >
-        {question.text}
-      </div>
-
-      {/* Answers */}
-      {isPlainText ? (
-        <TextInputQuestion onSubmit={onTextAnswer} disabled={isLocked} />
-      ) : (
-        <div className="grid grid-cols-2 gap-3">
-          {options.map((option, index) => {
-            const label = LABELS[index];
-            const state = answerStates[index] ?? "idle";
-            if (!label) return null;
-            return (
-              <AnswerButton
-                key={index}
-                label={label}
-                text={option.text}
-                onClick={() => onAnswer(index)}
-                disabled={isLocked}
-                state={state}
-                delay={DELAYS[index] ?? 0}
-              />
-            );
-          })}
+        {/* Header: progress */}
+        <div className="flex items-center">
+          <span className="text-sm font-semibold text-game-accent-2">
+            Question {questionNumber}
+          </span>
         </div>
+
+        {/* Question */}
+        <div
+          className="rounded-2xl p-6 text-center font-bold text-game-accent leading-snug"
+          style={{
+            background: "#1B1D35",
+            border: "1px solid rgba(255,255,255,0.1)",
+            fontSize: "clamp(1.2rem, 2.5vw, 2rem)",
+          }}
+        >
+          {question.text}
+        </div>
+
+        {/* Answers */}
+        {isPlainText ? (
+          <TextInputQuestion onSubmit={onTextAnswer} disabled={isLocked} />
+        ) : (
+          <div className="grid grid-cols-2 gap-3">
+            {options.map((option, index) => {
+              const label = LABELS[index];
+              const state = answerStates[index] ?? "idle";
+              if (!label) return null;
+              return (
+                <AnswerButton
+                  key={index}
+                  label={label}
+                  text={option.text}
+                  onClick={() => onAnswer(index)}
+                  disabled={isLocked}
+                  state={state}
+                  delay={DELAYS[index] ?? 0}
+                />
+              );
+            })}
+          </div>
+        )}
+      </motion.div>
+      {questionNumber === 4 && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src="/omg.png"
+          alt="OMG"
+          className="absolute bottom-4 left-4 w-84 opacity-60 pointer-events-none"
+        />
       )}
-    </motion.div>
+    </>
   );
 }
