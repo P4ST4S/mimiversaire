@@ -57,7 +57,7 @@ const SEED_QUESTIONS = [
   {
     order: 5,
     questionType: "qcm",
-    text: "Quel personnage incarnait le cosplayer qui a offert à Mimi l'une des interactions sociales les plus malaisantes de sa vie ?",
+    text: "Quel perso incarnait le cosplayer qui a offert à Mimi l'une des interactions les plus cringe all time ?",
     options: [
       { label: "A", text: "Deadpool, toujours prêt à briser le 4ème mur" },
       { label: "B", text: "Sanji, le simp numéro 1 de Nami" },
@@ -70,6 +70,19 @@ const SEED_QUESTIONS = [
     roastText:
       "Tu as oublié ce moment de pure gêne absolue avec ce faux Nicky Larson ? Ton radar à malaise est définitivement cassé. 🔫",
   },
+  {
+    order: 6,
+    questionType: "plain_text",
+    text: "Selon Nono, que provoque la douce odeur de Dabi-kun ?",
+    options: null,
+    correctIndex: null,
+    correctAnswer: "appétit",
+    acceptPartial: true,
+    clipUrl:
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/TON_CLIP_COCHON.mp4",
+    roastText:
+      "T'as oublié cette délicieuse odeur qui réveille l'appétit de Nono ? Retourne à la rôtisserie ! 🥓🔥",
+  },
 ];
 
 async function seed(): Promise<void> {
@@ -77,7 +90,7 @@ async function seed(): Promise<void> {
   await db.delete(questions);
   console.warn("Inserting seed questions...");
   await db.insert(questions).values(SEED_QUESTIONS);
-  console.warn("Seed complete. 5 questions inserted.");
+  console.warn("Seed complete. 6 questions inserted.");
   process.exit(0);
 }
 

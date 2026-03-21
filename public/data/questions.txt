@@ -87,7 +87,7 @@ roast_text: T'as explosé une mamie en jeu et t'as même pas le souvenir du crim
 order: 5
 type: qcm
 
-text: Quel personnage incarnait le cosplayer qui a offert à Mimi l'une des interactions sociales les plus malaisantes de sa vie ?
+text: Quel perso incarnait le cosplayer qui a offert à Mimi l'une des interactions les plus cringe all time ?
 option_a: Deadpool, toujours prêt à briser le 4ème mur
 option_b: Sanji, le simp numéro 1 de Nami
 option_c: Nicky Larson, qui a eu beaucoup de mal à "se contrôler"
@@ -99,6 +99,20 @@ clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/nickycringe.
 
 roast_text: Tu as oublié ce moment de pure gêne absolue avec ce faux Nicky Larson ? Ton radar à malaise est définitivement cassé. 🔫
 
+---
+
+order: 6
+type: plain_text
+
+text: Selon Nono, que provoque la douce odeur de Dabi-kun ?
+correct_answer: appétit
+accept_partial: true
+
+clip_url: https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/TON_CLIP_COCHON.mp4
+
+roast_text: T'as oublié cette délicieuse odeur qui réveille l'appétit de Nono ? Retourne à la rôtisserie ! 🥓🔥
+
+---
 
 # ============================================================
 # CHECKLIST AVANT DE LANCER LE SEED
