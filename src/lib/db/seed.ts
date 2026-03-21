@@ -8,7 +8,7 @@ const SEED_QUESTIONS = [
     text: "Qui ressemble au daron d'Arthur ?",
     options: null,
     correctIndex: null,
-    correctAnswer: "Wassim",
+    correctAnswer: "Was",
     acceptPartial: true,
     clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/4.mp4",
     roastText:
@@ -61,7 +61,10 @@ const SEED_QUESTIONS = [
     options: [
       { label: "A", text: "Deadpool, toujours prêt à briser le 4ème mur" },
       { label: "B", text: "Sanji, le simp numéro 1 de Nami" },
-      { label: "C", text: 'Nicky Larson, qui a eu beaucoup de mal à "se contrôler"' },
+      {
+        label: "C",
+        text: 'Nicky Larson, qui a eu beaucoup de mal à "se contrôler"',
+      },
       { label: "D", text: "Tortue Géniale, fidèle à sa réputation" },
     ],
     correctIndex: 2,

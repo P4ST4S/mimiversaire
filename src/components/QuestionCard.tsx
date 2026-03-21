@@ -5,6 +5,7 @@ import type { Question } from "@/lib/db/queries";
 import type { AnswerLabel, AnswerState } from "./AnswerButton";
 import AnswerButton from "./AnswerButton";
 import TextInputQuestion from "./TextInputQuestion";
+import AzizQuestionImg from "./AzizQuestionImg";
 
 const LABELS: AnswerLabel[] = ["A", "B", "C", "D"];
 const DELAYS = [0, 0.08, 0.16, 0.24];
@@ -87,6 +88,7 @@ export default function QuestionCard({
           </div>
         )}
       </motion.div>
+      {questionNumber === 2 && <AzizQuestionImg />}
       {questionNumber === 4 && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
