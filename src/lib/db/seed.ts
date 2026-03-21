@@ -82,7 +82,7 @@ const SEED_QUESTIONS = [
     correctAnswer: "appétit",
     acceptPartial: true,
     clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/TON_CLIP_COCHON.mp4",
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/dabicochon.mp4",
     roastText:
       "T'as oublié cette délicieuse odeur qui réveille l'appétit de Nono ? Retourne à la rôtisserie ! 🥓🔥",
   },

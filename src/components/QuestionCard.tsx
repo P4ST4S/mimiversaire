@@ -97,6 +97,14 @@ export default function QuestionCard({
           className="absolute bottom-4 left-4 w-84 opacity-60 pointer-events-none"
         />
       )}
+      {questionNumber === 5 && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src="/slayy.png"
+          alt="Nicky Larson cringe"
+          className="absolute bottom-20 right-80 w-74 opacity-60 pointer-events-none"
+        />
+      )}
     </>
   );
 }
