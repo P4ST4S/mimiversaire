@@ -6,6 +6,7 @@ import type { AnswerLabel, AnswerState } from "./AnswerButton";
 import AnswerButton from "./AnswerButton";
 import TextInputQuestion from "./TextInputQuestion";
 import AzizQuestionImg from "./AzizQuestionImg";
+import TrollAnswerGrid from "./TrollAnswerGrid";
 
 const LABELS: AnswerLabel[] = ["A", "B", "C", "D"];
 const DELAYS = [0, 0.08, 0.16, 0.24];
@@ -67,6 +68,14 @@ export default function QuestionCard({
         {/* Answers */}
         {isPlainText ? (
           <TextInputQuestion onSubmit={onTextAnswer} disabled={isLocked} />
+        ) : question.order === 3 ? (
+          <TrollAnswerGrid
+            options={options}
+            correctIndex={question.correctIndex ?? 0}
+            onAnswer={onAnswer}
+            answerStates={answerStates}
+            isLocked={isLocked}
+          />
         ) : (
           <div className="grid grid-cols-2 gap-3">
             {options.map((option, index) => {

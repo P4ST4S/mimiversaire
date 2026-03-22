@@ -37,7 +37,7 @@ const SEED_QUESTIONS = [
       { label: "C", text: "Senritsu la magnifique" },
       { label: "D", text: "Le goat de RE3 Nemesis" },
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/5.mp4",
     roastText:
       "T'as même pas retenu ton propre rêve de cosplay... Le chat te regarde avec pitié. 🪡",
