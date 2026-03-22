@@ -36,7 +36,7 @@ export default function TextInputQuestion({
         disabled={disabled}
         placeholder="Ta réponse..."
         autoFocus
-        className="w-full max-w-md rounded-xl px-6 py-4 text-white font-bold text-center bg-game-surface border border-white/20 outline-none focus:border-game-accent-2 placeholder:text-white/30 disabled:opacity-50"
+        className="w-full h-12 max-w-md rounded-xl px-6 py-4 text-white font-bold text-center bg-game-surface border border-white/20 outline-none focus:border-game-accent-2 placeholder:text-white/30 disabled:opacity-50"
         style={{ fontSize: "clamp(1rem, 2vw, 1.3rem)" }}
       />
       <button

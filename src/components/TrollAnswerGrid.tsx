@@ -86,7 +86,7 @@ export default function TrollAnswerGrid({
 
   function handleNemesisOui() {
     setShowNemesisPopup(false);
-    setEscaped((prev) => ({ ...prev, [NEMESIS_INDEX]: randomPos() }));
+    onAnswer(correctIndex);
   }
 
   function handleNemesisNon() {
