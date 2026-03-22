@@ -4,6 +4,13 @@ import { useState, useRef, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import AnswerButton from "./AnswerButton";
 import type { AnswerLabel, AnswerState } from "./AnswerButton";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const LABELS: AnswerLabel[] = ["A", "B", "C", "D"];
 const DELAYS = [0, 0.08, 0.16, 0.24];
@@ -41,7 +48,12 @@ export default function TrollAnswerGrid({
   isLocked,
 }: TrollAnswerGridProps) {
   const [escaped, setEscaped] = useState<Record<number, EscapedPos>>({});
+  const [nemesisClicks, setNemesisClicks] = useState(0);
+  const [showNemesisPopup, setShowNemesisPopup] = useState(false);
+  const [nemesisVanished, setNemesisVanished] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+
+  const NEMESIS_INDEX = 3;
 
   // Force all cells to the exact same height as the tallest one
   useLayoutEffect(() => {
@@ -59,9 +71,32 @@ export default function TrollAnswerGrid({
     if (isLocked) return;
     if (index === correctIndex) {
       onAnswer(index);
+    } else if (index === NEMESIS_INDEX) {
+      const newCount = nemesisClicks + 1;
+      setNemesisClicks(newCount);
+      if (newCount >= 5) {
+        setShowNemesisPopup(true);
+      } else {
+        setEscaped((prev) => ({ ...prev, [index]: randomPos() }));
+      }
     } else {
       setEscaped((prev) => ({ ...prev, [index]: randomPos() }));
     }
+  }
+
+  function handleNemesisOui() {
+    setShowNemesisPopup(false);
+    setEscaped((prev) => ({ ...prev, [NEMESIS_INDEX]: randomPos() }));
+  }
+
+  function handleNemesisNon() {
+    setShowNemesisPopup(false);
+    setNemesisVanished(true);
+    setEscaped((prev) => {
+      const next = { ...prev };
+      delete next[NEMESIS_INDEX];
+      return next;
+    });
   }
 
   return (
@@ -73,14 +108,17 @@ export default function TrollAnswerGrid({
           if (!label) return null;
 
           const isEscaped = !!escaped[index];
+          const isVanished = index === NEMESIS_INDEX && nemesisVanished;
 
           return (
-            // Invisible placeholder keeps grid layout intact when button escapes
+            // Invisible placeholder keeps grid layout intact when button escapes/vanishes
             <div
               key={index}
               style={{
                 display: "grid",
-                ...(isEscaped ? { visibility: "hidden", pointerEvents: "none" } : {}),
+                ...(isEscaped || isVanished
+                  ? { visibility: "hidden", pointerEvents: "none" }
+                  : {}),
               }}
             >
               <AnswerButton
@@ -95,6 +133,51 @@ export default function TrollAnswerGrid({
           );
         })}
       </div>
+
+      {/* Nemesis popup after 5 clicks */}
+      <Dialog open={showNemesisPopup} onOpenChange={() => {}}>
+        <DialogContent
+          showCloseButton={false}
+          className="bg-game-surface border-white/10 text-game-accent p-0 overflow-hidden"
+        >
+          <div
+            style={{
+              padding: "2.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "2rem",
+            }}
+          >
+            <DialogHeader className="gap-4">
+              <DialogTitle className="text-game-accent text-lg">
+                Conditions d&apos;accès requises
+              </DialogTitle>
+              <DialogDescription className="text-game-accent-2 leading-relaxed text-sm">
+                Si tu veux choisir cette réponse, tu acceptes d&apos;abord de
+                goûter un des plats de Aziz de la question précédente.
+              </DialogDescription>
+            </DialogHeader>
+            <div
+              style={{ display: "flex", justifyContent: "center", gap: "1rem" }}
+            >
+              <button
+                onClick={handleNemesisNon}
+                style={{ padding: "0.75rem 2rem" }}
+                className="rounded-lg font-bold text-white bg-red-600 hover:bg-red-700 transition-colors cursor-pointer"
+              >
+                Non merci
+              </button>
+              <button
+                onClick={handleNemesisOui}
+                style={{ padding: "0.75rem 2rem" }}
+                className="rounded-lg font-bold text-white bg-green-700 hover:bg-green-800 transition-colors cursor-pointer"
+              >
+                Oui j&apos;accepte
+              </button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Escaped buttons rendered at fixed positions */}
       {Object.entries(escaped).map(([idxStr, pos]) => {
@@ -118,9 +201,7 @@ export default function TrollAnswerGrid({
             <AnswerButton
               label={label}
               text={option.text}
-              onClick={() =>
-                setEscaped((prev) => ({ ...prev, [index]: randomPos() }))
-              }
+              onClick={() => handleClick(index)}
               disabled={false}
               state="idle"
               delay={0}
