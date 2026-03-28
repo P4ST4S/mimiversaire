@@ -91,12 +91,15 @@ const SEED_QUESTIONS = [
   },
   {
     order: 7,
-    questionType: "plain_text",
+    questionType: "qcm",
     text: "Selon Nono, que provoque la douce odeur de Dabi-kun ?",
-    options: null,
-    correctIndex: null,
-    correctAnswer: "appétit",
-    acceptPartial: true,
+    options: [
+      { label: "A", text: "Donne l'appétit" },
+      { label: "B", text: "Pique les yeux comme un oignon" },
+      { label: "C", text: "Endort instantanément" },
+      { label: "D", text: "Donne envie de fuir en courant" },
+    ],
+    correctIndex: 0,
     clipUrl:
       "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/dabicochon.mp4",
     roastText:
