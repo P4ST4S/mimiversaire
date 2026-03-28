@@ -75,6 +75,21 @@ const SEED_QUESTIONS = [
   },
   {
     order: 6,
+    questionType: "qcm",
+    text: "Quelles visions Katsu n'a jamais eue ? (votez pour lui)",
+    options: [
+      { label: "A", text: "Nono Sadako" },
+      { label: "B", text: "Mimi Uchiwa" },
+      { label: "C", text: "Lou Caitlyn" },
+      { label: "D", text: "Twinszat en Homura" },
+    ],
+    correctIndex: 3,
+    clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/katsuvision.mp4",
+    roastText:
+      "Katsu aurait voté pour lui-même... mais même là tu t'es planté. 💀",
+  },
+  {
+    order: 7,
     questionType: "plain_text",
     text: "Selon Nono, que provoque la douce odeur de Dabi-kun ?",
     options: null,
@@ -93,7 +108,7 @@ async function seed(): Promise<void> {
   await db.delete(questions);
   console.warn("Inserting seed questions...");
   await db.insert(questions).values(SEED_QUESTIONS);
-  console.warn("Seed complete. 6 questions inserted.");
+  console.warn("Seed complete. 7 questions inserted.");
   process.exit(0);
 }
 
