@@ -78,13 +78,14 @@ const SEED_QUESTIONS = [
     questionType: "qcm",
     text: "Quelles visions Katsu n'a jamais eue ? (votez pour lui)",
     options: [
-      { label: "A", text: "Nono Sadako" },
-      { label: "B", text: "Mimi Uchiwa" },
-      { label: "C", text: "Lou Caitlyn" },
+      { label: "A", text: "Nono en Sadako" },
+      { label: "B", text: "Mimi en un Uchiwa" },
+      { label: "C", text: "Lou en Caitlyn" },
       { label: "D", text: "Twinszat en Homura" },
     ],
     correctIndex: 3,
-    clipUrl: "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/katsuvision.mp4",
+    clipUrl:
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/katsuvision.mp4",
     roastText:
       "Katsu aurait voté pour lui-même... mais même là tu t'es planté. 💀",
   },
