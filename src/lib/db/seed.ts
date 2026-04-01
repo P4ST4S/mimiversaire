@@ -85,7 +85,7 @@ const SEED_QUESTIONS = [
     ],
     correctIndex: 3,
     clipUrl:
-      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/katsuvision.mp4",
+      "https://pub-4967b3d287b74363b485326b5a4d9a91.r2.dev/clips/katsuvision2.mp4",
     roastText:
       "Katsu aurait voté pour lui-même... mais même là tu t'es planté. 💀",
   },
