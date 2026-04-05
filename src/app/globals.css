@@ -5,6 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  /* Soul Society (Bleach) theme — used on /bon-anniversaire */
+  --color-soul-void:       #0A0A0F;
+  --color-soul-navy:       #0E1420;
+  --color-soul-elevated:   #1C2340;
+  --color-soul-gold:       #C9A84C;
+  --color-soul-gold-light: #E8D5A3;
+  --color-soul-white:      #F0EEE6;
+  --color-soul-danger:     #A71F36;
+
   --color-game-bg:        #0D0F1C;
   --color-game-surface:   #1B1D35;
   --color-game-surface-2: #22254A;

@@ -5,7 +5,6 @@ import { motion, useMotionValue, animate } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Trophy, PartyPopper, ThumbsUp, Brain, Skull, Star } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useGameStore } from "@/lib/store/game-store";
 
 interface ScoreBoardProps {
   score: number;
@@ -26,7 +25,6 @@ function getVerdict(
 
 export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
   const router = useRouter();
-  const resetGame = useGameStore((s) => s.resetGame);
 
   const count = useMotionValue(0);
   // const rounded = useTransform(count, (v) => Math.round(v));
@@ -38,9 +36,8 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
 
   const { Icon, color, text } = getVerdict(score, totalQuestions);
 
-  function handleReplay() {
-    resetGame();
-    router.push("/");
+  function handleSuivant() {
+    router.push("/bon-anniversaire");
   }
 
   return (
@@ -96,13 +93,13 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
       </p>
 
       <motion.button
-        onClick={handleReplay}
+        onClick={handleSuivant}
         className="mt-2 rounded-xl font-bold text-white text-lg cursor-pointer"
         style={{ background: "#88a2ee", padding: "0.75rem 2.5rem" }}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.97 }}
       >
-        Rejouer
+        Suivant →
       </motion.button>
     </motion.div>
   );
