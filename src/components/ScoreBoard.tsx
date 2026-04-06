@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { Trophy, PartyPopper, ThumbsUp, Brain, Skull, Star } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import SenkaimonTransition from "./SenkaimonTransition";
 
 interface ScoreBoardProps {
   score: number;
@@ -24,10 +24,9 @@ function getVerdict(
 }
 
 export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
-  const router = useRouter();
+  const [transitioning, setTransitioning] = useState(false);
 
   const count = useMotionValue(0);
-  // const rounded = useTransform(count, (v) => Math.round(v));
 
   useEffect(() => {
     const controls = animate(count, score, { duration: 1.5, ease: "easeOut" });
@@ -37,7 +36,7 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
   const { Icon, color, text } = getVerdict(score, totalQuestions);
 
   function handleSuivant() {
-    router.push("/bon-anniversaire");
+    setTransitioning(true);
   }
 
   return (
@@ -94,13 +93,19 @@ export default function ScoreBoard({ score, totalQuestions }: ScoreBoardProps) {
 
       <motion.button
         onClick={handleSuivant}
+        disabled={transitioning}
         className="mt-2 rounded-xl font-bold text-white text-lg cursor-pointer"
-        style={{ background: "#88a2ee", padding: "0.75rem 2.5rem" }}
-        whileHover={{ scale: 1.04 }}
-        whileTap={{ scale: 0.97 }}
+        style={{
+          background: transitioning ? "#5a6ea0" : "#88a2ee",
+          padding: "0.75rem 2.5rem",
+        }}
+        whileHover={transitioning ? {} : { scale: 1.04 }}
+        whileTap={transitioning ? {} : { scale: 0.97 }}
       >
         Suivant →
       </motion.button>
+
+      <SenkaimonTransition isActive={transitioning} />
     </motion.div>
   );
 }

@@ -48,6 +48,18 @@ export default function QuizContent() {
     }
   }, [sessionId, router]);
 
+  // Dev shortcut: Ctrl+Shift+S to skip to scoreboard
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.ctrlKey && e.key === "k") {
+        e.preventDefault();
+        endGame();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [endGame]);
+
   // Fetch all questions once
   useEffect(() => {
     fetch("/api/questions")
@@ -99,9 +111,9 @@ export default function QuizContent() {
         if (isCorrect && clipUrl) {
           setFeedback({ type: "correct", clipUrl });
         } else {
-          const correctOption = currentQuestion?.options?.[correctIndex ?? -1] as
-            | { text: string }
-            | undefined;
+          const correctOption = currentQuestion?.options?.[
+            correctIndex ?? -1
+          ] as { text: string } | undefined;
           setFeedback({
             type: "wrong",
             roastText: roastText ?? "Mauvaise réponse !",
@@ -110,7 +122,7 @@ export default function QuizContent() {
         }
       }, 800);
     },
-    [isLocked, sessionId, questionIndex, recordAnswer, questions]
+    [isLocked, sessionId, questionIndex, recordAnswer, questions],
   );
 
   const handleTextAnswer = useCallback(
@@ -140,7 +152,7 @@ export default function QuizContent() {
         });
       }
     },
-    [isLocked, sessionId, questionIndex, recordAnswer]
+    [isLocked, sessionId, questionIndex, recordAnswer],
   );
 
   const handleContinue = useCallback(() => {
