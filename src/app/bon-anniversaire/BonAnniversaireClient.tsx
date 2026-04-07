@@ -17,6 +17,8 @@ export default function BonAnniversaireClient({
   ostUrl,
 }: Props) {
   const [phase, setPhase] = useState<Phase>("opening");
+  const [volume, setVolume] = useState(0.2);
+  const [muted, setMuted] = useState(false);
   const openingRef = useRef<HTMLVideoElement>(null);
   const messageRef = useRef<HTMLVideoElement>(null);
   const ostRef = useRef<HTMLAudioElement>(null);
@@ -27,6 +29,12 @@ export default function BonAnniversaireClient({
       ostRef.current.play().catch(() => {});
     }
   }, []);
+
+  useEffect(() => {
+    if (ostRef.current) {
+      ostRef.current.volume = muted ? 0 : volume;
+    }
+  }, [volume, muted]);
 
   useEffect(() => {
     if (openingRef.current) {
@@ -54,6 +62,59 @@ export default function BonAnniversaireClient({
     >
       {/* Background OST */}
       <audio ref={ostRef} src={ostUrl} loop />
+
+      {/* Volume control */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: 20,
+          right: 20,
+          zIndex: 50,
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+          background: "rgba(14,20,32,0.85)",
+          border: "1px solid rgba(201,168,76,0.3)",
+          borderRadius: "2px",
+          padding: "8px 14px",
+          backdropFilter: "blur(8px)",
+        }}
+      >
+        <button
+          onClick={() => setMuted((m) => !m)}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "#C9A84C",
+            fontSize: "1.1rem",
+            lineHeight: 1,
+            padding: 0,
+            display: "flex",
+            alignItems: "center",
+          }}
+          aria-label={muted ? "Activer le son" : "Couper le son"}
+        >
+          {muted || volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊"}
+        </button>
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step={0.01}
+          value={muted ? 0 : volume}
+          onChange={(e) => {
+            const v = parseFloat(e.target.value);
+            setVolume(v);
+            if (v > 0 && muted) setMuted(false);
+          }}
+          style={{
+            width: "90px",
+            accentColor: "#C9A84C",
+            cursor: "pointer",
+          }}
+        />
+      </div>
 
       {/* Kanji watermark */}
       <span
