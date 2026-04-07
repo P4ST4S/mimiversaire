@@ -9,8 +9,8 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Mimiversaire Quiz 🎂",
-  description: "Le quiz anniversaire de Mimi !",
+  title: "Mimiversaire 🎂",
+  description: "Bon anniversaire de Mimi !",
 };
 
 export default function RootLayout({
